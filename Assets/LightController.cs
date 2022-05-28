@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class LightController : MonoBehaviour
 {
+    public float pullSpeed;
+    public void Awake()
+    {
+        this.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.gray);
+        this.pullSpeed = 0.07f;
+    }
     public bool isOn;
     void SwapColors(GameObject obj)
     {
-        if (isOn)
+        if (obj.GetComponent<LightController>().isOn)
         {
             obj.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.gray);
-            isOn = false;        
+            obj.GetComponent<LightController>().isOn = false;
         }
         else
         {
             obj.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow);
-            isOn = true;
+            obj.GetComponent<LightController>().isOn = true;
             GameObject pObj=GameObject.Find("Player");
-            pObj.transform.position = Vector3.MoveTowards(pObj.transform.position, obj.transform.position, 2 * Time.deltaTime);
+            pObj.transform.position = Vector3.MoveTowards(pObj.transform.position, obj.transform.position, pullSpeed * Time.deltaTime);
         }
     }
     public void OnClick()
@@ -34,8 +41,8 @@ public class LightController : MonoBehaviour
         {
             if (hit.transform != null)
             {
-                Debug.Log("hi" + hit.transform.gameObject.name);
-                if (this.name == "Light_Sphere")
+                Debug.Log("hi raycasted" + hit.transform.gameObject.name);
+                if (hit.transform.gameObject.name == "Light_Sphere")
                 {
                     Debug.Log("Color=" + hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_EmissionColor"));
                     SwapColors(hit.transform.gameObject);

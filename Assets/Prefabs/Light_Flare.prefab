@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 3165672878816767986}
   m_Layer: 0
   m_Name: Light_Sphere
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -130,7 +130,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 3.15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5431067754141057533
 MonoBehaviour:
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad943163cd187d84e8dbbf9941030ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pullSpeed: 0.07
   isOn: 0
 --- !u!54 &1160312634975527530
 Rigidbody:
