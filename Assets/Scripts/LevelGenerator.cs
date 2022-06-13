@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
     void GenerateLevel(int level)
     {
         Vector3 vec = new Vector3();
-        for (int i=10;i<600;i+=20)
+        for (int i=10;i<40;i+=20)
         {
             
             vec.Set(-5, 1, i);

@@ -7,13 +7,13 @@ using UnityEngine.InputSystem;
 public class LightController : MonoBehaviour
 {
     public float pullSpeed;
+    public bool isOn;
     public void Awake()
     {
         this.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.gray);
         this.pullSpeed = 0.07f;
         this.isOn = false;
     }
-    public bool isOn;
     void SwapColors(GameObject obj)
     {
         Debug.Log("Swapping colors for obj "+obj.name);
@@ -46,7 +46,7 @@ public class LightController : MonoBehaviour
         {
             if (hit.transform != null)
             {
-                Debug.Log("hi raycasted" + hit.transform.gameObject.name);
+                Debug.Log("hi raycasted" + hit.transform.gameObject.GetInstanceID());
                 if (hit.transform.gameObject.name == "Light_Sphere")
                 {
                     Debug.Log("Color=" + hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_EmissionColor"));
